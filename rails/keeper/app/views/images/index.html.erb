@@ -10,6 +10,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -20,6 +21,10 @@
         <td><%= image.format %></td>
         <td><%= image.width %></td>
         <td><%= image.height %></td>
+        <td>
+          <img width ="100" src='<%=Rails.application.config.shot_file_url+"/" + image.file_name%>'/>
+
+        </td>
         <td><%= link_to 'Show', image %></td>
         <td><%= link_to 'Edit', edit_image_path(image) %></td>
         <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>

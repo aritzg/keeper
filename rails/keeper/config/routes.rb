@@ -1,6 +1,8 @@
 Keeper::Application.routes.draw do
+
   resources :videos
 
+  get 'images/shot' => 'images#shot'
   resources :images
 
   get 'system_info' => 'system_info#index'

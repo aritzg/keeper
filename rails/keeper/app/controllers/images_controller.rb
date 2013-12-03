@@ -61,6 +61,14 @@ class ImagesController < ApplicationController
     end
   end
 
+  def shot
+    logger.debug "Taking pic"
+    @image = Image.new
+    @image.file_name="shot_" + DateTime.current.strftime("%Y%m%d_%I%M%S") + ".jpg"
+    system('raspistill -o ' + Rails.application.config.shot_file_path + '/' + @image.file_name)
+    @image.save
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_image
