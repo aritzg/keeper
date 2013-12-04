@@ -67,6 +67,14 @@ class ImagesController < ApplicationController
     @image.file_name="shot_" + DateTime.current.strftime("%Y%m%d_%I%M%S") + ".jpg"
     system('raspistill -o ' + Rails.application.config.shot_file_path + '/' + @image.file_name)
     @image.save
+
+    respond_to do |format|
+      format.html { redirect_to @image, notice: 'Image was successfully created.' }
+      format.json {redirect_to image_path(@image, format: :json) }
+    end
+
+
+
   end
 
   private
