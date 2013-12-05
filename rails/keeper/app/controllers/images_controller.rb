@@ -66,7 +66,7 @@ class ImagesController < ApplicationController
     logger.debug "Taking pic"
     @image = Image.new
     @image.file_name="shot_" + DateTime.current.strftime("%Y%m%d_%I%M%S") + ".jpg"
-    system('raspistill -w 200 -o ' + Rails.application.config.shot_file_path + '/' + @image.file_name)
+    system('raspistill -q 10 -o ' + Rails.application.config.shot_file_path + '/' + @image.file_name)
     @image.save
 
     respond_to do |format|
